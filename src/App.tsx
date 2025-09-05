@@ -3,7 +3,7 @@ import "./App.css";
 import { SeatDetails } from "./components/SeatDetails";
 import { SeatingMap } from "./components/SeatingMap";
 import { SelectionSummary } from "./components/SelectionSummary";
-import {
+import type {
   SelectedSeat,
   SelectionSummary as SelectionSummaryType,
   Venue,
@@ -124,6 +124,15 @@ function App() {
     []
   );
 
+  const summary: SelectionSummaryType = useMemo(
+    () => ({
+      selectedSeats,
+      totalPrice: calculateTotalPrice(selectedSeats.map((s) => s.seat)),
+      maxSeats: MAX_SELECTED_SEATS,
+    }),
+    [selectedSeats]
+  );
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -147,15 +156,6 @@ function App() {
       </div>
     );
   }
-
-  const summary: SelectionSummaryType = useMemo(
-    () => ({
-      selectedSeats,
-      totalPrice: calculateTotalPrice(selectedSeats.map((s) => s.seat)),
-      maxSeats: MAX_SELECTED_SEATS,
-    }),
-    [selectedSeats]
-  );
 
   return (
     <div className="min-h-screen bg-gray-100">

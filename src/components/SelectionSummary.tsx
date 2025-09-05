@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectionSummary as SelectionSummaryType } from "../types/venue";
+import type { SelectionSummary as SelectionSummaryType } from "../types/venue";
 
 interface SelectionSummaryProps {
   summary: SelectionSummaryType;

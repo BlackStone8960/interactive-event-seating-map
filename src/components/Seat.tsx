@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { SeatStatus, Seat as SeatType } from "../types/venue";
+import type { SeatStatus, Seat as SeatType } from "../types/venue";
 import { getPriceForTier } from "../utils/pricing";
 
 interface SeatProps {

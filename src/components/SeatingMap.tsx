@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { Seat as SeatType, SelectedSeat, Venue } from "../types/venue";
+import type { Seat as SeatType, SelectedSeat, Venue } from "../types/venue";
 import { Seat } from "./Seat";
 
 interface SeatingMapProps {

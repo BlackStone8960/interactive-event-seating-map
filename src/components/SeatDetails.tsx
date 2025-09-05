@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectedSeat } from "../types/venue";
+import type { SelectedSeat } from "../types/venue";
 import { getPriceForTier } from "../utils/pricing";
 
 interface SeatDetailsProps {

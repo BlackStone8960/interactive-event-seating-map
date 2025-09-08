@@ -1,69 +1,66 @@
-# React + TypeScript + Vite
+# Interactive Event Seating Map
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application that renders an interactive seating map for events. Users can select up to 8 seats, view seat details, and see a live summary with pricing information.
 
-Currently, two official plugins are available:
+## Architecture Choices and Trade-offs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Technology Stack:**
 
-## Expanding the ESLint configuration
+- **React 19 + TypeScript**: Modern React with strict type checking for better development experience and code reliability
+- **Vite**: Fast build tool and development server for optimal performance
+- **SVG Rendering**: Used SVG instead of Canvas for better accessibility support and easier styling
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development and consistent responsive design
+- **localStorage**: Simple client-side persistence for seat selection state
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Performance Optimizations:**
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React.memo**: Memoized components to prevent unnecessary re-renders
+- **useMemo/useCallback**: Optimized expensive calculations and event handlers
+- **Efficient Data Structures**: Used Set for O(1) seat selection lookups
+- **SVG-based Rendering**: Scalable vector graphics for smooth rendering at any zoom level
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Accessibility Features:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **ARIA Labels**: Comprehensive screen reader support with detailed seat information
+- **Keyboard Navigation**: Full keyboard support with Enter/Space key activation
+- **Focus Management**: Clear focus indicators and logical tab order
+- **Semantic HTML**: Proper roles and ARIA attributes for interactive elements
+
+## Incomplete Features / TODOs
+
+- **Performance Testing**: While optimized for ~15,000 seats, large-scale performance testing with real data is needed
+- **WebSocket Integration**: Live seat status updates not implemented (stretch goal)
+- **Heat Map Toggle**: Price tier visualization not implemented (stretch goal)
+- **Adjacent Seat Finder**: "Find N adjacent seats" helper not implemented (stretch goal)
+- **Touch Gestures**: Pinch-zoom and pan for mobile not implemented (stretch goal)
+- **Dark Mode**: Dark theme toggle not implemented (stretch goal)
+- **End-to-End Tests**: Playwright/Cypress tests not included (stretch goal)
+
+## How to Run
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173/`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- ✅ Interactive seat selection (click and keyboard)
+- ✅ Seat details display on focus/click
+- ✅ Maximum 8 seats selection with live summary
+- ✅ Price calculation and subtotal display
+- ✅ Selection persistence via localStorage
+- ✅ Full accessibility support (ARIA, keyboard navigation)
+- ✅ Responsive design for desktop and mobile
+- ✅ Smooth performance optimized for large venues

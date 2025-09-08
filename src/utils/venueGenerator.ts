@@ -1,11 +1,10 @@
-import { Row, Seat, SeatStatus, Section, Venue } from "../types/venue";
+import type { Row, Seat, SeatStatus, Section, Venue } from "../types/venue";
 
 /**
  * Generate a large venue with approximately 15,000 seats for performance testing
  */
 export function generateLargeVenue(): Venue {
   const sections: Section[] = [];
-  const seatStatuses: SeatStatus[] = ["available", "reserved", "sold", "held"];
 
   // Generate multiple sections
   for (let sectionIndex = 0; sectionIndex < 20; sectionIndex++) {

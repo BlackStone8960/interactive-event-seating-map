@@ -48,7 +48,7 @@ export const Seat: React.FC<SeatProps> = memo(
         fill={color}
         stroke={isSelected ? "#1d4ed8" : "#374151"}
         strokeWidth={isSelected ? 2 : 1}
-        className="cursor-pointer transition-all duration-150 hover:r-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="cursor-pointer transition-all duration-150 hover:r-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
         onClick={() => onClick(seat)}
         onKeyDown={(e) => onKeyDown(e, seat)}
         onFocus={() => onFocus?.(seat)}
